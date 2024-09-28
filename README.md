@@ -28,11 +28,6 @@ The chatbot serves as an interactive tool that showcases how Redis can be integr
    ```
    This command will automatically set up both Redis and the chatbot.
 
-2. **Install Dependencies**: If you want to manually install the required Python library for development purposes, use the following command:
-   ```sh
-   pip install redis
-   ```
-
 ## Running the Chatbot
 1. **Start Services with Docker Compose**: Ensure that Docker is installed and running, then use `docker-compose` to start both Redis and the chatbot. The setup is entirely handled through Docker, so there is no need to manually configure a local Redis server.
    ```sh
