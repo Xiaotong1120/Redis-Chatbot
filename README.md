@@ -77,3 +77,15 @@ Upon running the chatbot, you will be lead to the user identification first, aft
 - **Security**: Since Redis stores user information, it's important to ensure that the Docker environment is properly secured.
 - **Learning and Exploration**: This chatbot is intended for educational purposes, demonstrating how to integrate Redis for data persistence in Python applications.
 
+
+## Acknowledgment of Assistance
+
+I utilized ChatGPT for assistance with the following aspects of this project:
+
+1. Writing the code to install the Redis library if it was not found.
+2. Modifying the predefined object "self" for better structure.
+3. Loading channels that users have already subscribed to and understanding the decoding process.
+4. Designing the overall logic of the Redis-based chatbot.
+5. Writing and improving the project documentation.
+6. Implementing threads to handle multiple tasks simultaneously.
+7. Creating the function for continuously listening to messages in channels.
