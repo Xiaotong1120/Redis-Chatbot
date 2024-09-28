@@ -19,30 +19,26 @@ The chatbot serves as an interactive tool that showcases how Redis can be integr
 - **Preloaded Data**: Includes fun facts and weather data for popular cities, offering ready-to-use information for users.
 
 ## Prerequisites
-- **Python 3.x**: The script is written in Python, so you’ll need Python installed.
-- **Redis Server**: A running Redis server is required for storing and managing user data and channel information.
-- **Docker**: A Docker environment is required if you want to use the provided Docker setup to simplify running the Redis server and chatbot.
+- **Docker**: A Docker environment is required to use the provided Docker setup, which simplifies running the Redis server and the chatbot.
 
 ## Installation
-1. **Install Dependencies**: If you want to manually install the required Python library, use the following command:
-   ```sh
-   pip install redis
-   ```
-2. **Using Docker Compose**: If you want to set up Redis and the chatbot using Docker, a `docker-compose.yaml` file is provided. Run the following command to set up the services:
+1. **Using Docker Compose**: To set up Redis and the chatbot using Docker, a `docker-compose.yaml` file is provided. Run the following command to set up the services:
    ```sh
    docker-compose up
    ```
-   This will automatically set up both Redis and the chatbot.
+   This command will automatically set up both Redis and the chatbot.
 
-3. The script will attempt to install the `redis` package automatically if it is missing, so there is no need to worry about missing dependencies when running it for the first time.
+2. **Install Dependencies**: If you want to manually install the required Python library for development purposes, use the following command:
+   ```sh
+   pip install redis
+   ```
 
 ## Running the Chatbot
-1. **Start Redis Server**: Ensure that a Redis server is running. The chatbot defaults to `localhost` on port `6379`. If using Docker, this will be handled by `docker-compose`.
-2. **Run the Script**: Execute the Python script using the command below:
+1. **Start Services with Docker Compose**: Ensure that Docker is installed and running, then use `docker-compose` to start both Redis and the chatbot. The setup is entirely handled through Docker, so there is no need to manually configure a local Redis server.
    ```sh
-   python chatbot.py
+   docker-compose up
    ```
-3. **Interacting with the Chatbot**: The chatbot will guide you through different menus to set up your profile, join channels, send messages, or use special commands.
+2. **Interacting with the Chatbot**: The chatbot will automatically start once the services are up. It will guide you through different menus to set up your profile, join channels, send messages, or use special commands.
 
 ## Usage
 ### Main Menu
@@ -70,7 +66,7 @@ Upon running the chatbot, you will have the following options:
 
 ## Requirements
 The Python dependencies for this project are minimal:
-- **Redis Library**: The Python `redis` library is used for connecting to the Redis server.
+- **Redis Library**: The Python `redis` library is used for connecting to the Redis server if running locally for development purposes.
 
 To install, include this in a `requirements.txt` file:
 ```text
@@ -91,8 +87,8 @@ redis
 - **main_menu()**, **channel_menu()**, **specific_commands_menu()**: Guides users through different actions they can take with the chatbot.
 
 ## Important Notes
-- **Persistent Storage**: All user data and channel subscriptions are stored in Redis. Ensure that your Redis server is running during use, or the chatbot will not function as expected.
-- **Security**: Since Redis stores user information, it's important to ensure that the Redis server is properly secured.
+- **Persistent Storage**: All user data and channel subscriptions are stored in Redis. Ensure that Docker is running during use, or the chatbot will not function as expected.
+- **Security**: Since Redis stores user information, it's important to ensure that the Docker environment is properly secured.
 - **Learning and Exploration**: This chatbot is intended for educational purposes, demonstrating how to integrate Redis for data persistence in Python applications.
 
 ## License
