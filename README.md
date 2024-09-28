@@ -21,17 +21,23 @@ The chatbot serves as an interactive tool that showcases how Redis can be integr
 ## Prerequisites
 - **Python 3.x**: The script is written in Python, so you’ll need Python installed.
 - **Redis Server**: A running Redis server is required for storing and managing user data and channel information.
-- **Redis Python Library**: The script uses the `redis` library, which will be installed automatically if not already present.
+- **Docker**: A Docker environment is required if you want to use the provided Docker setup to simplify running the Redis server and chatbot.
 
 ## Installation
 1. **Install Dependencies**: If you want to manually install the required Python library, use the following command:
    ```sh
    pip install redis
    ```
-2. The script will attempt to install the `redis` package automatically if it is missing, so there is no need to worry about missing dependencies when running it for the first time.
+2. **Using Docker Compose**: If you want to set up Redis and the chatbot using Docker, a `docker-compose.yaml` file is provided. Run the following command to set up the services:
+   ```sh
+   docker-compose up
+   ```
+   This will automatically set up both Redis and the chatbot.
+
+3. The script will attempt to install the `redis` package automatically if it is missing, so there is no need to worry about missing dependencies when running it for the first time.
 
 ## Running the Chatbot
-1. **Start Redis Server**: Ensure that a Redis server is running. The chatbot defaults to `localhost` on port `6379`. If your setup differs, you may need to adjust the connection parameters in the script.
+1. **Start Redis Server**: Ensure that a Redis server is running. The chatbot defaults to `localhost` on port `6379`. If using Docker, this will be handled by `docker-compose`.
 2. **Run the Script**: Execute the Python script using the command below:
    ```sh
    python chatbot.py
