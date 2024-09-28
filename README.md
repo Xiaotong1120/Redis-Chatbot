@@ -22,22 +22,22 @@ The chatbot serves as an interactive tool that showcases how Redis can be integr
 - **Docker**: A Docker environment is required to use the provided Docker setup, which simplifies running the Redis server and the chatbot.
 
 ## Installation
-1. **Using Docker Compose**: To set up Redis and the chatbot using Docker, a `docker-compose.yaml` file is provided. Run the following command to set up the services:
+1. **Start Services with Docker Compose**: Ensure that Docker is installed and running, then use `docker-compose` to start Redis. The setup is entirely handled through Docker, so there is no need to manually configure a local Redis server. However, remember to mount the volume in the `docker-compose.yaml` file.
    ```sh
    docker-compose up
    ```
-   This command will automatically set up both Redis and the chatbot.
-
-## Running the Chatbot
-1. **Start Services with Docker Compose**: Ensure that Docker is installed and running, then use `docker-compose` to start both Redis and the chatbot. The setup is entirely handled through Docker, so there is no need to manually configure a local Redis server.
+2. **Go into the docker environment**: Make sure the container is running, then open a new terminal to interact with it, and then run the following command.
    ```sh
-   docker-compose up
+   docker exec -it slim-python bash
    ```
-2. **Interacting with the Chatbot**: The chatbot will automatically start once the services are up. It will guide you through different menus to set up your profile, join channels, send messages, or use special commands.
-
+3. **Interacting with the Chatbot**: Locate to the folder where contains the `chatbot.py` file, run the following command.
+   ```sh
+   python chatbot.py
+   ```
+   
 ## Usage
 ### Main Menu
-Upon running the chatbot, you will have the following options:
+Upon running the chatbot, you will be lead to the user identification first, after typing your personal information, you will have the following options:
 1. **Channel-Related Commands**: Join or leave channels, listen to channel messages, or send messages.
 2. **Special Commands**: Use chatbot commands like `!help`, `!weather <city>`, `!fact`, or `!whoami` to get information.
 3. **Quit**: Exit the chatbot application.
@@ -58,15 +58,6 @@ Upon running the chatbot, you will have the following options:
 - **Predefined Channels**: You can modify the channels in the `setup_predefined_channels()` method if you want to add new ones.
 - **Fun Facts**: Additional facts can be added in the `store_mock_data()` method to enrich the user experience.
 - **Weather Data**: Edit the weather information in `store_mock_data()` to change the weather data for cities of your choice.
-
-## Requirements
-The Python dependencies for this project are minimal:
-- **Redis Library**: The Python `redis` library is used for connecting to the Redis server if running locally for development purposes.
-
-To install, include this in a `requirements.txt` file:
-```text
-redis
-```
 
 ## Code Structure
 - **Redis Setup**: Checks if the `redis` package is installed and installs it if missing.
