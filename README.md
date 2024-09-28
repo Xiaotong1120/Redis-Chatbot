@@ -22,27 +22,22 @@ The chatbot serves as an interactive tool that showcases how Redis can be integr
 - **Docker**: A Docker environment is required to use the provided Docker setup, which simplifies running the Redis server and the chatbot.
 
 ## Installation
-1. **Using Docker Compose**: To set up Redis and the chatbot using Docker, a `docker-compose.yaml` file is provided. Run the following command to set up the services:
+1. **Start Services with Docker Compose**: Ensure that Docker is installed and running, then use `docker-compose` to start Redis. The setup is entirely handled through Docker, so there is no need to manually configure a local Redis server. However, remember to mount the volume in the `docker-compose.yaml` file.
    ```sh
    docker-compose up
    ```
-   This command will automatically set up both Redis and the chatbot.
-
-2. **Install Dependencies**: If you want to manually install the required Python library for development purposes, use the following command:
+2. **Go into the docker environment**: Make sure the container is running, then open a new terminal to interact with it, and then run the following command.
    ```sh
-   pip install redis
+   docker exec -it slim-python bash
    ```
-
-## Running the Chatbot
-1. **Start Services with Docker Compose**: Ensure that Docker is installed and running, then use `docker-compose` to start both Redis and the chatbot. The setup is entirely handled through Docker, so there is no need to manually configure a local Redis server.
+3. **Interacting with the Chatbot**: Locate to the folder where contains the `chatbot.py` file, run the following command.
    ```sh
-   docker-compose up
+   python chatbot.py
    ```
-2. **Interacting with the Chatbot**: The chatbot will automatically start once the services are up. It will guide you through different menus to set up your profile, join channels, send messages, or use special commands.
-
+   
 ## Usage
 ### Main Menu
-Upon running the chatbot, you will have the following options:
+Upon running the chatbot, you will be lead to the user identification first, after typing your personal information, you will have the following options:
 1. **Channel-Related Commands**: Join or leave channels, listen to channel messages, or send messages.
 2. **Special Commands**: Use chatbot commands like `!help`, `!weather <city>`, `!fact`, or `!whoami` to get information.
 3. **Quit**: Exit the chatbot application.
@@ -64,15 +59,6 @@ Upon running the chatbot, you will have the following options:
 - **Fun Facts**: Additional facts can be added in the `store_mock_data()` method to enrich the user experience.
 - **Weather Data**: Edit the weather information in `store_mock_data()` to change the weather data for cities of your choice.
 
-## Requirements
-The Python dependencies for this project are minimal:
-- **Redis Library**: The Python `redis` library is used for connecting to the Redis server if running locally for development purposes.
-
-To install, include this in a `requirements.txt` file:
-```text
-redis
-```
-
 ## Code Structure
 - **Redis Setup**: Checks if the `redis` package is installed and installs it if missing.
 - **Chatbot Class**: Manages the core functionality of the chatbot, including user profiles, channels, and command processing.
@@ -91,5 +77,15 @@ redis
 - **Security**: Since Redis stores user information, it's important to ensure that the Docker environment is properly secured.
 - **Learning and Exploration**: This chatbot is intended for educational purposes, demonstrating how to integrate Redis for data persistence in Python applications.
 
-## License
-This project is licensed under the MIT License, so feel free to use, modify, and expand upon it as you like.
+
+## Acknowledgment of Assistance
+
+I utilized ChatGPT for assistance with the following aspects of this project:
+
+1. Writing the code to install the Redis library if it was not found.
+2. Modifying the predefined object "self" for better structure.
+3. Loading channels that users have already subscribed to and understanding the decoding process.
+4. Designing the overall logic of the Redis-based chatbot.
+5. Writing and improving the project documentation.
+6. Implementing threads to handle multiple tasks simultaneously.
+7. Creating the function for continuously listening to messages in channels.
